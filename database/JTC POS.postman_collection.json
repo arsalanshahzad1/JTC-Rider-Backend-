@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "ea162c6a-0959-47b0-9fa1-cdcf113d41a6",
+		"name": "JTC POS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26345078"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@infy-pos.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://jtc-pos.test/api/login",
+							"protocol": "http",
+							"host": [
+								"jtc-pos",
+								"test"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get product by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "api product",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "110354654",
+									"type": "text"
+								},
+								{
+									"key": "product_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product_cost",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "product_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sale_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "stock_alert",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "quantity_limit",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "order_tax",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tax_type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "notes",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "barcode_symbol",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "addon_data",
+									"value": "[{\"addon_id\":1,\"addon_item_id\":2,\"price\":10},{\"addon_id\":2,\"addon_item_id\":4,\"price\":25}]",
+									"type": "text"
+								},
+								{
+									"key": "is_addon_check",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_warehouse_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "purchase_status",
+									"value": "received",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tax_type",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create product Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "api product2",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "110354654",
+									"type": "text"
+								},
+								{
+									"key": "product_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product_cost",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "product_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sale_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_unit",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "stock_alert",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "quantity_limit",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "order_tax",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tax_type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "notes",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "barcode_symbol",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "addon_data",
+									"value": "[{\"addon_id\":1,\"addon_item_id\":2,\"price\":10},{\"addon_id\":2,\"addon_item_id\":4,\"price\":25}]",
+									"type": "text"
+								},
+								{
+									"key": "is_addon_check",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_warehouse_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_supplier_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "purchase_quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "purchase_status",
+									"value": "received",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tax_type",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products/24",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Variation Product by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product-variation-by-product/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product-variation-by-product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addons",
+			"item": [
+				{
+					"name": "Get All Addons",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Addons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Temperature",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "temperature",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/addons-create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addons-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Addons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Temperature-u",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "temperature",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "temperature",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/addons-update/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addons-update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Addons by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addons/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Addon Related Items/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-related-items/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-related-items",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addon Items",
+			"item": [
+				{
+					"name": "Get All Addon Items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Addon Related Items/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Addon Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Medium",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "medium",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Medium cup",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-item-create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-item-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Addon Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Large",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "large",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "large tea cup",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-item-update/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-item-update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Addon Item by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/addon-items/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addon-items",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addon And Releted Addon Items",
+			"item": [
+				{
+					"name": "Create Addons Related Addon Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jtc_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "addons_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "addon_items_id",
+									"value": "[3,4]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/addons-addon-item-create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addons-addon-item-create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
