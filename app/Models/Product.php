@@ -21,6 +21,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property string $name
  * @property string $code
  * @property int $product_category_id
+ * @property int $product_subcategory_id
  * @property int $brand_id
  * @property float $product_cost
  * @property float $product_price
@@ -39,6 +40,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Models\ProductCategory|null $productCategory
+ * @property-read \App\Models\ProductSubCategory|null $productSubCategory
  * @property-read \App\Models\Warehouse|null $warehouse
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
@@ -52,6 +54,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereOrderTax($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductSubCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductUnit($value)
@@ -105,6 +108,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
         'name',
         'code',
         'product_category_id',
+        'product_subcategory_id',
         'brand_id',
         'product_cost',
         'product_price',
@@ -123,6 +127,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
         'name' => 'required',
         'code' => 'required|unique:products',
         'product_category_id' => 'required|exists:product_categories,id',
+        'product_subcategory_id' => 'required|exists:product_subcategories,id',
         'brand_id' => 'required|exists:brands,id',
         'product_cost' => 'required|numeric',
         'product_price' => 'required|numeric',
@@ -140,6 +145,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
 
     public static $availableRelations = [
         'product_category_id' => 'productCategory',
+        'product_subcategory_id' => 'productSubCategory',
         'brand_id' => 'brand',
     ];
 
@@ -200,6 +206,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
             'name' => $this->name,
             'code' => $this->code,
             'product_category_id' => $this->product_category_id,
+            'product_subcategory_id' => $this->product_subcategory_id,
             'brand_id' => $this->brand_id,
             'product_cost' => $this->product_cost,
             'product_price' => $this->product_price,
@@ -214,6 +221,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
             'notes' => $this->notes,
             'images' => $this->image_url,
             'product_category_name' => $this->productCategory->name,
+            'product_subcategory_name' => $this->productSubCategory->name,
             'brand_name' => $this->brand->name,
             'barcode_image_url' => $this->barcode_image_url,
             'barcode_symbol' => $this->barcode_symbol,
@@ -244,6 +252,7 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
         return [
             'id' => self::class,
             'product_category_id' => ProductCategory::class,
+            'product_subcategory_id' => ProductSubCategory::class,
             'brand_id' => Brand::class,
         ];
     }
@@ -324,6 +333,14 @@ class Product extends BaseModel implements HasMedia, JsonResourceful
     public function productCategory(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function productSubCategory(): BelongsTo
+    {
+        return $this->belongsTo(ProductSubCategory::class, 'product_subcategory_id', 'id');
     }
 
     /**

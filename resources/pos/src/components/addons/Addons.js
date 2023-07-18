@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import MasterLayout from '../MasterLayout';
 import {fetchAddons} from '../../store/action/addonsAction';
@@ -21,6 +21,10 @@ const Addons = () => {
     const [edit, setEdit] = useState(false);
     const [addon, setAddon] = useState();
     const updatedLanguage = localStorage.getItem(Tokens.UPDATED_LANGUAGE)
+
+    useEffect(() => {
+        console.log('addons->>', addons)
+      }, []);
 
     const handleClose = (item) => {
         setEdit(!edit);
@@ -75,7 +79,7 @@ const Addons = () => {
                                        onClickDeleteModel={onClickDeleteModel}/>
         }
     ];
-    console.log(addons,'addons')
+    console.log(addons,'addons..')
     return (
         <MasterLayout>
             <TopProgressBar />

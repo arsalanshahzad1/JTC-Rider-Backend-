@@ -204,6 +204,7 @@ const AsideMenu = (props) => {
                                 || location.pathname === mainItems?.subPath?.suppliareSubPath
                                 || location.pathname === mainItems?.subPath?.productsSubPath
                                 || location.pathname === mainItems?.subPath?.categoriesSubPath
+                                || location.pathname === mainItems?.subPath?.subCategoriesSubPath
                                 || location.pathname === mainItems?.subPath?.brandsSubPath
                                 || location.pathname === mainItems?.subPath?.unitsSubPath
                                 || location.pathname === mainItems?.subPath?.baseUnitsSubPath

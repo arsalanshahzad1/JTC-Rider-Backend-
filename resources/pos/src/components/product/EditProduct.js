@@ -21,13 +21,17 @@ const EditProduct = (props) => {
     }, []);
     const getSaleUnit = products.length >= 1 && products[0]?.attributes.sale_unit_name ? { label: products[0]?.attributes.sale_unit_name.name, value: products[0]?.attributes.sale_unit_name.id } : ''
     const getPurchaseUnit = products.length >= 1 && products[0]?.attributes.sale_unit_name ? { label: products[0]?.attributes.purchase_unit_name.name, value: products[0]?.attributes.purchase_unit_name.id } : ''
-console.log('products',products)
+
     const itemsValue = products.length === 1 && products.map(product => ({
         name: product?.attributes.name,
         code: product?.attributes.code,
         product_category_id: {
             value: product?.attributes.product_category_id,
             label: product?.attributes.product_category_name
+        },
+        product_subcategory_id: {
+            value: product?.attributes.product_subcategory_id,
+            label: product?.attributes.product_subcategory_name
         },
         brand_id: {
             value: product?.attributes.brand_id,
@@ -54,7 +58,7 @@ console.log('products',products)
 
     }));
     const getProductUnit = itemsValue && base.filter((fill) => Number(fill?.id) === Number(itemsValue[0]?.product_unit))
-    // console.log('itemsValue',itemsValue)
+    
     return (
         <MasterLayout>
             <TopProgressBar />

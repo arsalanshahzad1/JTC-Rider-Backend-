@@ -257,6 +257,7 @@
     "product-categories.title": "产品类别",
     "product-category.title": "产品类别",
     "product-category.create.title": "创建产品类别",
+    "product-subcategory.create.title": "创建产品子类别",
     "product-category.edit.title": "编辑产品类别",
     "product-category.success.create.message": "产品类别创建成功",
     "product-category.success.edit.message": "产品类别更新成功",

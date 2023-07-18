@@ -6,6 +6,7 @@ export const apiBaseURL = {
     CURRENCY: '/currencies',
     REGISTRATION: '/register',
     PRODUCTS_CATEGORIES: '/product-categories',
+    PRODUCTS_SUBCATEGORIES: '/product-subcategories',
     ROLES: '/roles',
     LANGUAGES: '/languages',
     PERMISSION: '/permissions',
@@ -319,6 +320,15 @@ export const productCategoriesActionType = {
     FETCH_ALL_PRODUCTS_CATEGORIES: 'FETCH_ALL_PRODUCTS_CATEGORIES'
 };
 
+export const productSubCategoriesActionType = {
+    FETCH_PRODUCTS_SUBCATEGORIES: 'FETCH_PRODUCTS_SUBCATEGORIES',
+    FETCH_PRODUCT_SUBCATEGORIES: 'FETCH_PRODUCT_SUBCATEGORIES',
+    ADD_PRODUCT_SUBCATEGORIES: 'ADD_PRODUCT_SUBCATEGORIES',
+    EDIT_PRODUCT_SUBCATEGORIES: 'EDIT_PRODUCT_SUBCATEGORIES',
+    DELETE_PRODUCT_SUBCATEGORIES: 'DELETE_PRODUCT_SUBCATEGORIES',
+    FETCH_ALL_PRODUCTS_SUBCATEGORIES: 'FETCH_ALL_PRODUCTS_SUBCATEGORIES'
+};
+
 export const expenseCategoriesActionType = {
     FETCH_EXPENSES_CATEGORIES: 'FETCH_EXPENSES_CATEGORIES',
     FETCH_EXPENSE_CATEGORIES: 'FETCH_EXPENSE_CATEGORIES',
@@ -574,6 +584,7 @@ export const Permissions = {
     MANAGE_WAREHOUSES: 'manage_warehouses',
     MANAGE_UNITS: 'manage_units',
     MANAGE_PRODUCT_CATEGORIES: 'manage_product_categories',
+    MANAGE_PRODUCT_SUBCATEGORIES: 'manage_product_subcategories',
     MANAGE_PRODUCTS: 'manage_products',
     MANAGE_SUPPLIERS: 'manage_suppliers',
     MANAGE_CUSTOMERS: 'manage_customers',

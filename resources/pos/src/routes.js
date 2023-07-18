@@ -5,6 +5,7 @@ import Warehouses from "./components/warehouse/Warehouses";
 import CreateWarehouse from "./components/warehouse/CreateWarehouse";
 import EditWarehouse from "./components/warehouse/EditWarehouse";
 import ProductCategory from "./components/productCategory/ProductCategory";
+import ProductSubCategory from "./components/productSubCategory/ProductSubCategory";
 import Units from "./components/units/Units";
 import Suppliers from "./components/supplier/Suppliers";
 import CreateSupplier from "./components/supplier/CreateSupplier";
@@ -131,6 +132,12 @@ export const route = [
         path: "product-categories",
         ele: <ProductCategory/>,
         permission: Permissions.MANAGE_PRODUCT_CATEGORIES
+    },
+    {
+        path: "product-subcategories",
+        ele: <ProductSubCategory/>,
+        // permission: Permissions.MANAGE_PRODUCT_SUBCATEGORIES
+        permission: ''
     },
     {
         path: "units",

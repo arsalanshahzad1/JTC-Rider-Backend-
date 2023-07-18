@@ -11,6 +11,7 @@ const UnitsForm = (props) => {
     const {handleClose, base, fetchAllBaseUnits, show, title, addProductData, editUnit, singleUnit,hide, product_unit} = props;
     const innerRef = createRef();
     const newUnit = singleUnit && base.filter((da) => singleUnit.base_unit === da.attributes.name);
+    console.log('singleUnit', singleUnit)
 
     const [unitValue, setUnitValue] = useState({
         name: singleUnit ? singleUnit.name : '',

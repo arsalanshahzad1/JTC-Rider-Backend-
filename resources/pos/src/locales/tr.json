@@ -256,6 +256,7 @@
     "product-categories.title": "ürün kategorileri",
     "product-category.title": "Ürün Kategorisi",
     "product-category.create.title": "Ürün Kategorisi Oluştur",
+    "product-subcategory.create.title": "Ürün Alt Kategorisi Oluşturun",
     "product-category.edit.title": "Ürün Kategorisini Düzenle",
     "product-category.success.create.message": "Ürün kategorisi başarıyla oluşturuldu",
     "product-category.success.edit.message": "Ürün kategorisi başarıyla güncellendi",

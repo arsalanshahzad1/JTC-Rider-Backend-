@@ -35,6 +35,7 @@ const asideConfig = [
         subPath: {
             productsSubPath: "/app/products",
             categoriesSubPath : "/app/product-categories",
+            subCategoriesSubPath : "/app/product-subcategories",
             brandsSubPath : "/app/brands",
             unitsSubPath : "/app/units",
             baseUnitsSubPath : "/app/base-units",
@@ -56,6 +57,14 @@ const asideConfig = [
                 to: '/app/product-categories',
                 class: 'd-flex',
                 permission: Permissions.MANAGE_PRODUCT_CATEGORIES,
+            },
+            {
+                title: 'product.subcategories.title',
+                name: "product subcategories",
+                fontIcon: <FontAwesomeIcon icon={faBoxOpen}/>,
+                to: '/app/product-subcategories',
+                class: 'd-flex',
+                permission: Permissions.MANAGE_PRODUCT_SUBCATEGORIES,
             },
             {
                 title: 'brands.title',

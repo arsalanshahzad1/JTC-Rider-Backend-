@@ -20,12 +20,14 @@ class ProductSubCategoryAPIController extends Controller
     {
         $lastCount=$request->last_count-1 ?? 0;
         $productSubCategory = ProductSubCategory::with('category');
+        // return $productSubCategory;
         
         if($request->has('search')){
             $productSubCategory = $productSubCategory->where('name', 'like', '%'.$request->search.'%');
         }
 
         $productSubCategory = $productSubCategory->orderBy('created_at', 'desc')->skip($lastCount)->take(10)->get();
+        // $productSubCategory = 
 
         if(!empty($productSubCategory)){
             $data = [
@@ -90,6 +92,25 @@ class ProductSubCategoryAPIController extends Controller
 
             return response()->json($data, 404);
         }
+    }
+
+    public function show($product_category_id) {
+        // $validator = Validator::make($request->all(), [
+        //     'product_category_id' => 'required'
+        // ]);
+        // if ($validator->fails()) {
+        // 	$data = [
+	    // 		'status' => false,
+	    // 		'message' => $validator->errors()->first()
+	    // 	];
+        // 	return response()->json($data, 403);
+        // }
+        $productSubCategory = ProductSubCategory::where('product_category_id', $product_category_id)->get();
+        $data = [
+            'status' => true,
+            'data' => $productSubCategory
+        ];
+        return response()->json($data, 200);
     }
 
     public function update(Request $request, $id)

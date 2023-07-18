@@ -444,6 +444,7 @@ Route::prefix('rider')->group(function () {
 
 // product sub categories
 Route::resource('product-subcategories', ProductSubCategoryAPIController::class);
+Route::post('product-subcategories/{product_category}', [ProductSubCategoryAPIController::class, 'update'])->name('product-subcategory');
 
 // events
 Route::resource('event-types', EventTypeAPIController::class);

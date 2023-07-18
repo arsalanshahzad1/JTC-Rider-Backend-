@@ -257,6 +257,9 @@
     "product-category.success.create.message": "Catégorie de produit créée avec succès",
     "product-category.success.edit.message": "Catégorie de produit mise à jour avec succès",
     "product-category.success.delete.message": "Catégorie de produit supprimée avec succès",
+
+    "product-subcategory.create.title": "Créer une sous-catégorie de produit",
+    
     "expense-categories.title": "Catégories de dépenses",
     "expense-category.title": "Catégorie de dépenses",
     "expense-category.create.title": "Créer une catégorie de dépenses",

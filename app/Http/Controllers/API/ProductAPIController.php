@@ -100,6 +100,7 @@ class ProductAPIController extends AppBaseController
     public function update(UpdateProductRequest $request, $id)
     {
         $input = $request->all();
+        // return $input;
         $product = $this->productRepository->updateProduct($input, $id);
 
         return new ProductResource($product);

@@ -261,6 +261,9 @@
     "product-category.success.create.message": "تم إنشاء فئة المنتج بنجاح",
     "product-category.success.edit.message": "تم تحديث فئة المنتج بنجاح",
     "product-category.success.delete.message": "تم حذف فئة المنتج بنجاح",
+    
+    "product-subcategories.title": "الفئات الفرعية",
+
     "expense-categories.title": "فئات المصاريف",
     "expense-category.title": "فئة المصاريف",
     "expense-category.create.title": "إنشاء فئة المصاريف",

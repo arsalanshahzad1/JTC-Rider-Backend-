@@ -31,17 +31,17 @@ export const fetchAddons = (filter = {}, isLoading = true) => async (dispatch) =
         });
 };
 
-// export const fetchAddon = (brandsId, singleUser) => async (dispatch) => {
-//     apiConfig.get(apiBaseURL.BRANDS + '/' + brandsId, singleUser)
-//         .then((response) => {
-//             dispatch({type: brandsActionType.FETCH_BRAND, payload: response.data.data});
-//         })
-//         .catch(({response}) => {
-//             dispatch(addToast(
-//                 {text: response.data.message, type: toastType.ERROR}));
-//         });
-// }
-//
+export const fetchAddon = (brandsId, singleUser) => async (dispatch) => {
+    apiConfig.get(apiBaseURL.BRANDS + '/' + brandsId, singleUser)
+        .then((response) => {
+            dispatch({type: brandsActionType.FETCH_BRAND, payload: response.data.data});
+        })
+        .catch(({response}) => {
+            dispatch(addToast(
+                {text: response.data.message, type: toastType.ERROR}));
+        });
+}
+
 export const addAddon = (addons) => async (dispatch) => {
     await apiConfig.post(apiBaseURL.ADDONS, addons)
         .then((response) => {

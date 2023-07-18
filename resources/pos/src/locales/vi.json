@@ -255,6 +255,7 @@
     "product-categories.title": "Danh mục sản phẩm",
     "product-category.title": "danh mục sản phẩm",
     "product-category.create.title": "Tạo danh mục sản phẩm",
+    "product-subcategory.create.title": "Tạo danh mục con sản phẩm",
     "product-category.edit.title": "Chỉnh sửa danh mục sản phẩm",
     "product-category.success.create.message": "Danh mục sản phẩm đã được tạo thành công",
     "product-category.success.edit.message": "Đã cập nhật danh mục sản phẩm thành công",

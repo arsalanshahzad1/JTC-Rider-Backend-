@@ -35,7 +35,8 @@ const ProductForm = (props) => {
     const [isAddonChecked, setIsAddonChecked] = useState(false);
     const [groupOptions, setGroupOptions] = useState([]);
 
-
+    const [productSubCategories, setProductSubCategories] = useState(null);
+    // const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
    const addonItemPriceHandler =  (e) => {
     for (let i = 0; i < selectedOptions.length; i++) {
@@ -102,7 +103,6 @@ const ProductForm = (props) => {
 
             const AddonsGroup = singleProduct[0].product_addons.map((addon) => {
                     let addonItems = addon.addon_items.map((addonItem) => {
-                        // console.log(addonItem,'addonItem')
                         return {
                             value: addonItem.item_id,
                             label: addonItem.item_name,
@@ -149,6 +149,7 @@ const ProductForm = (props) => {
         name: '',
         code: '',
         product_category_id: '',
+        product_subcategory_id: '',
         brand_id: '',
         barcode_symbol: '',
         product_cost: '',
@@ -180,6 +181,7 @@ const ProductForm = (props) => {
         name: '',
         code: '',
         product_category_id: '',
+        product_subcategory_id: '',
         brand_id: '',
         barcode_symbol: '',
         product_cost: '',
@@ -221,7 +223,7 @@ const ProductForm = (props) => {
     const newTax = singleProduct && taxes.filter((tax) => singleProduct[0].tax_type === tax.value);
 
     const newBarcode = singleProduct && barcodes.filter((barcode) => singleProduct[0].barcode_symbol.toString() === barcode.value);
-    const disabled = multipleFiles.length !== 0 ? false : singleProduct && productValue.product_unit[0] && productValue.product_unit[0].value === singleProduct[0].product_unit && productValue.barcode_symbol[0] && productValue.barcode_symbol[0].value === singleProduct[0].barcode_symbol.toString() && singleProduct[0].name === productValue.name && singleProduct[0].notes === productValue.notes && singleProduct[0].product_price === productValue.product_price && singleProduct[0]?.stock_alert?.toString() === productValue.stock_alert && singleProduct[0].product_cost === productValue.product_cost && singleProduct[0].code === productValue.code && JSON.stringify(singleProduct[0].order_tax) === productValue.order_tax && singleProduct[0].quantity_limit === productValue.sale_quantity_limit && singleProduct[0].brand_id.value === productValue.brand_id.value && newTax.length === productValue.tax_type.length && singleProduct[0].product_category_id.value === productValue.product_category_id.value && JSON.stringify(singleProduct[0].images.imageUrls) === JSON.stringify(removedImage)
+    const disabled = multipleFiles.length !== 0 ? false : singleProduct && productValue.product_unit[0] && productValue.product_unit[0].value === singleProduct[0].product_unit && productValue.barcode_symbol[0] && productValue.barcode_symbol[0].value === singleProduct[0].barcode_symbol.toString() && singleProduct[0].name === productValue.name && singleProduct[0].notes === productValue.notes && singleProduct[0].product_price === productValue.product_price && singleProduct[0]?.stock_alert?.toString() === productValue.stock_alert && singleProduct[0].product_cost === productValue.product_cost && singleProduct[0].code === productValue.code && JSON.stringify(singleProduct[0].order_tax) === productValue.order_tax && singleProduct[0].quantity_limit === productValue.sale_quantity_limit && singleProduct[0].brand_id.value === productValue.brand_id.value && newTax.length === productValue.tax_type.length && singleProduct[0].product_category_id.value === productValue.product_category_id.value && singleProduct[0].product_subcategory_id.value === productValue.product_subcategory_id.value && JSON.stringify(singleProduct[0].images.imageUrls) === JSON.stringify(removedImage)
     const [selectedBrand] = useState(singleProduct && singleProduct[0] ? ([{
         label: singleProduct[0].brand_id.label, value: singleProduct[0].brand_id.value
     }]) : null);
@@ -235,6 +237,10 @@ const ProductForm = (props) => {
         label: singleProduct[0].product_category_id.label, value: singleProduct[0].product_category_id.value
     }]) : null);
 
+    const [selectedProductSubCategory] = useState(singleProduct && singleProduct[0] ? ([{
+        label: singleProduct[0].product_subcategory_id.label, value: singleProduct[0].product_subcategory_id.value
+    }]) : null);
+
     const [selectedTax] = useState(newTax && newTax[0] ? ([{ label: newTax[0].label, value: newTax[0].value }]) : null);
 
     const saleUnitOption = productUnits && productUnits.length && productUnits.map((productUnit) => {
@@ -243,12 +249,12 @@ const ProductForm = (props) => {
 
     useEffect(() => {
 
-
         if (singleProduct) {
             setProductValue({
                 name: singleProduct ? singleProduct[0].name : '',
                 code: singleProduct ? singleProduct[0].code : '',
                 product_category_id: singleProduct ? singleProduct[0].product_category_id : '',
+                product_subcategory_id: singleProduct ? singleProduct[0].product_subcategory_id : '',
                 brand_id: singleProduct ? singleProduct[0].brand_id : '',
                 barcode_symbol: selectedBarcode,
                 product_cost: singleProduct ? singleProduct[0].product_cost : '',
@@ -310,11 +316,6 @@ const ProductForm = (props) => {
         setErrors('');
     };
 
-    const onProductCategoryChange = (obj) => {
-        setProductValue(productValue => ({ ...productValue, product_category_id: obj }));
-        setErrors('');
-    };
-
     // tax type dropdown functionality
     const taxTypeFilterOptions = getFormattedOptions(taxMethodOptions)
     const [taxType, setTaxType] = useState(singleProduct ? singleProduct[0].tax_type === '1' ? {
@@ -358,7 +359,6 @@ const ProductForm = (props) => {
         setProductValue(inputs => ({ ...inputs, status_id: obj }))
     };
 
-
     const statusFilterOptions = getFormattedOptions(saleStatusOptions)
     const statusDefaultValue = statusFilterOptions.map((option) => {
         return {
@@ -376,6 +376,8 @@ const ProductForm = (props) => {
             errorss['code'] = getFormattedMessage('product.input.code.validate.label');
         } else if (!productValue['product_category_id']) {
             errorss['product_category_id'] = getFormattedMessage('product.input.product-category.validate.label');
+        } else if (!productValue['product_subcategory_id']) {
+            errorss['product_subcategory_id'] = getFormattedMessage('product.input.product-subcategory.validate.label');
         } else if (!productValue['brand_id']) {
             errorss['brand_id'] = getFormattedMessage('product.input.brand.validate.label');
         } else if (!productValue['barcode_symbol']) {
@@ -445,7 +447,6 @@ const ProductForm = (props) => {
         addBrand(formValue, Filters.OBJ)
     };
 
-
     const [unitModel, setUnitModel] = useState(false);
     const showUnitModel = (val) => {
         setUnitModel(val)
@@ -460,6 +461,7 @@ const ProductForm = (props) => {
         formData.append('name', data.name);
         formData.append('code', data.code);
         formData.append('product_category_id', data.product_category_id.value);
+        formData.append('product_subcategory_id', data.product_subcategory_id.value);
         formData.append('brand_id', data.brand_id.value);
         if (data.barcode_symbol[0]) {
             formData.append('barcode_symbol', data.barcode_symbol[0].value);
@@ -513,12 +515,33 @@ const ProductForm = (props) => {
             if (valid) {
                 productValue.images = multipleFiles;
                 setProductValue(productValue);
-
                 addProductData(prepareFormData(productValue));
             }
         }
     };
 
+    const onProductCategoryChange = (obj) => {
+        const fetchSubCat = async () => {
+            const response = await apiConfig.get(`product-subcategories/`+obj.value);
+            const subCategoryOptions = response.data.data.map((subcategory) => ({
+                value: subcategory.id,
+                label: subcategory.name,
+                id: subcategory.id,
+              }));
+            setProductSubCategories(subCategoryOptions);
+            // setSelectedProductSubCategory(null);
+        };
+        fetchSubCat();
+            
+        setProductValue(productValue => ({ ...productValue, product_category_id: obj }));
+        setErrors('');
+    };
+
+    const onProductSubCategoryChange = (obj) => {
+        setProductValue(productValue => ({ ...productValue, product_subcategory_id: obj }));
+        setErrors('');
+    };
+    
     return (
         <div className='card'>
             <div className='card-body'>
@@ -556,6 +579,19 @@ const ProductForm = (props) => {
                                             value={productValue.product_category_id}
                                             data={productCategories} onChange={onProductCategoryChange}
                                             errors={errors['product_category_id']} />
+                                    </div>
+                                    <div className='col-md-6 mb-3'>
+                                        <ReactSelect title={getFormattedMessage('product.input.product-subcategory.label')}
+                                            placeholder={placeholderText('product.input.product-subcategory.placeholder.label')}
+                                            defaultValue={selectedProductSubCategory}
+                                            //   value={selectedProductSubCategory}
+                                            value={productValue.product_subcategory_id}
+                                            data={productSubCategories}
+                                            onChange={onProductSubCategoryChange}
+                                            //   options={productSubCategories}
+                                            //   getOptionValue={(option) => option.id}
+                                            errors={errors['product_subcategory_id']}
+                                            />
                                     </div>
                                     <div className='col-md-6 mb-3'>
                                         <ReactSelect title={getFormattedMessage('product.input.brand.label')}

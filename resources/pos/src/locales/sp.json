@@ -256,6 +256,7 @@
     "product-categories.title": "Categorías de Producto",
     "product-category.title": "categoria de producto",
     "product-category.create.title": "Crear categoría de producto",
+    "product-subcategory.create.title": "Crear subcategoría de producto",
     "product-category.edit.title": "Editar categoría de producto",
     "product-category.success.create.message": "Categoría de producto Creado con éxito",
     "product-category.success.edit.message": "Categoría de producto actualizada con éxito",
